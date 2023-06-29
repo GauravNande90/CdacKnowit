@@ -1,0 +1,56 @@
+<html>
+<head>
+   
+    <title>Page Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+   <script>
+        $(document).ready(function(){  
+            $("#bt").click(function(){
+            
+                var url = "http://localhost:9000/getDataTable"
+                var name = $('#name').val();
+                var bdate = $('#bdate').val();
+                var email = $('#email').val();
+                var qual = $('#qual').val();
+
+                $.post(url, { name1 : name, bdate1 : bdate, email1 : email, qual1 : qual},function(data,status){
+                    if(status=="success")
+                        $("#table").html(data);             
+                })
+
+            })
+
+        })
+   </script>
+</head>
+<body>
+    <form name="f1">
+    <table>
+        <tr>
+        <td>Enter Name :</td>  
+        <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+        <td>Enter Birth Date :</td>
+        <td><input type="date" name="bdate" id="bdate" ></td>
+        </tr>
+        <tr>
+        <td>Enter Email :</td>
+        <td><input type="email" name="email" id="email" ></td>
+        </tr>
+        <tr>
+        <td>Enter Qualification:</td>
+        <td><input type="text" name="qual" id="qual" ></td>
+        </tr>
+        <tr>
+        <td><input type="button" value="Submit" id="bt" ></td>
+        </tr>
+        <tr>
+        <td><div id="table"></div></td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
+</html>
